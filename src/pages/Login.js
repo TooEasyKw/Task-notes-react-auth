@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { login } from "../api/auth";
+import { useMutation } from "@tanstack/react-query";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -6,10 +8,13 @@ const Login = () => {
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+  const { mutate } = useMutation({
+    mutationKey: ["login"],
+    mutationFn: () => login(userInfo),
+  });
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here
+    mutate();
   };
 
   return (
