@@ -46,9 +46,6 @@ const AddNote = ({ show, onClose, onSave }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     addNote();
-    setTitle("");
-    setTopics([]);
-    setBody("");
   };
 
   if (!show) {
@@ -128,6 +125,7 @@ const AddNote = ({ show, onClose, onSave }) => {
           <div className="flex justify-center">
             <button
               type="submit"
+              onClick={handleFormSubmit}
               className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
             >
               Save
